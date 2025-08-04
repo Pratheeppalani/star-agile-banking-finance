@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: insureme
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: insureme
+  template:
+    metadata:
+      labels:
+        app: insureme
+    spec:
+      containers:
+        - name: insurance
+          image: pratheep04/banking:1.0
+          ports:
+            - containerPort: 8081
+          env:
+            - name: PORT
+              value: "8081"
